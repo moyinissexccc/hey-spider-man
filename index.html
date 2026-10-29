@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10182f">
+<title>Hey, Spider-Man 🕷️</title>
+<style>
+:root{--red:#ef3340;--blue:#2374e1;--navy:#10182f;--cream:#fff7ec;--pink:#ffb7c5}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 20% 10%,#263c69 0,transparent 35%),linear-gradient(145deg,#0a1022,#17294a 60%,#10182f);color:var(--cream);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+.web{position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(30deg,transparent 48%,#a9c9ff 49%,transparent 50%),linear-gradient(150deg,transparent 48%,#a9c9ff 49%,transparent 50%);background-size:90px 90px;mask-image:linear-gradient(to bottom,black,transparent 90%);z-index:0}
+.city{position:fixed;bottom:0;left:0;right:0;height:125px;opacity:.28;pointer-events:none;background:linear-gradient(to top,#050913,transparent);z-index:0}
+.city:before{content:"";position:absolute;bottom:0;left:0;right:0;height:95px;background:repeating-linear-gradient(90deg,#050913 0 25px,transparent 25px 38px,#050913 38px 60px,transparent 60px 74px);clip-path:polygon(0 42%,5% 42%,5% 12%,10% 12%,10% 55%,16% 55%,16% 25%,21% 25%,21% 0,26% 0,26% 48%,33% 48%,33% 18%,39% 18%,39% 60%,46% 60%,46% 28%,53% 28%,53% 45%,60% 45%,60% 7%,66% 7%,66% 55%,73% 55%,73% 20%,79% 20%,79% 42%,86% 42%,86% 10%,92% 10%,92% 50%,100% 50%,100% 100%,0 100%)}
+main{position:relative;z-index:1;width:min(92%,560px);margin:0 auto;padding:42px 0 70px;text-align:center}
+.badge{display:inline-block;border:1px solid #ffffff40;border-radius:999px;padding:8px 13px;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:#dce9ff;background:#ffffff0c}
+h1{font-size:clamp(2.5rem,10vw,4.5rem);line-height:.98;margin:22px 0 14px;letter-spacing:-.06em;text-shadow:4px 4px 0 #e72c40}
+h1 span{color:#77b8ff}
+.subtitle{font-size:1.08rem;line-height:1.6;color:#e0e8f8;max-width:390px;margin:0 auto 24px}
+.spider-icon{font-size:3.5rem;filter:drop-shadow(0 7px 0 #0004);display:inline-block;animation:bob 2.8s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-9px) rotate(-5deg)}}
+.card{margin:25px auto 0;padding:25px 22px;background:#ffffff0d;border:1px solid #ffffff24;border-radius:26px;box-shadow:0 22px 65px #0003;backdrop-filter:blur(8px)}
+.page{display:none;animation:appear .45s ease}
+.page.active{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+h2{font-size:1.6rem;margin:5px 0 13px}
+p{line-height:1.75;color:#e8edf8}
+button{border:0;border-radius:999px;padding:14px 20px;font-size:1rem;font-weight:800;cursor:pointer;color:white;background:linear-gradient(120deg,var(--red),#ff5d68);box-shadow:0 7px 0 #9d1b2b,0 12px 24px #0003;transition:transform .15s,filter .15s;margin:10px 5px 5px}
+button:hover{filter:brightness(1.08);transform:translateY(-2px)}
+button:active{transform:translateY(3px);box-shadow:0 3px 0 #9d1b2b}
+button.secondary{background:linear-gradient(120deg,#1766c5,#438ff5);box-shadow:0 7px 0 #12447e,0 12px 24px #0003}
+.small{font-size:.88rem;color:#bfcce4}
+.envelope-wrap{perspective:900px;margin:26px auto 20px;width:210px;height:145px;cursor:pointer;position:relative}
+.envelope{position:absolute;inset:0;background:#f9e7ce;border-radius:7px;box-shadow:0 15px 25px #0004;overflow:visible}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,transparent 49%,#e8c9a9 50%) left/50% 100% no-repeat,linear-gradient(220deg,transparent 49%,#e8c9a9 50%) right/50% 100% no-repeat;z-index:2}
+.flap{position:absolute;top:0;left:0;width:0;height:0;border-left:105px solid transparent;border-right:105px solid transparent;border-top:83px solid #f1d4b2;transform-origin:top;transition:transform .7s;z-index:4;filter:drop-shadow(0 2px 1px #b48b65)}
+.seal{position:absolute;z-index:5;top:51px;left:calc(50% - 19px);width:38px;height:38px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:white;font-size:1.1rem;border:2px solid #ffb7c5;transition:opacity .2s}
+.letter{position:absolute;left:12px;right:12px;bottom:8px;height:115px;padding:13px 9px;background:#fffaf1;color:#3b2b2b;border-radius:5px;line-height:1.5;font-size:.82rem;z-index:1;transition:transform .8s,bottom .8s;box-shadow:0 2px 5px #0002}
+.envelope.open .flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .seal{opacity:0}
+.envelope.open .letter{transform:translateY(-80px);bottom:35px;z-index:6}
+.letter-content{background:#fffaf1;color:#342c32;border-radius:18px;padding:24px 20px;text-align:left;box-shadow:inset 0 0 0 1px #e8d7c8}
+.letter-content h3{color:#cf2937;text-align:center;font-size:1.5rem;margin:0 0 14px}
+.letter-content p{color:#44383b;line-height:1.85}
+.signature{text-align:right;font-weight:800;color:#cf2937!important}
+.hearts{font-size:1.5rem;letter-spacing:.35em;margin:8px 0}
+footer{margin-top:28px;color:#aab9d6;font-size:.78rem}
+.progress{display:flex;justify-content:center;gap:7px;margin:18px 0 0}
+.dot{width:7px;height:7px;border-radius:50%;background:#ffffff35}.dot.on{background:#ff5b68;box-shadow:0 0 10px #ff5b68}
+.spark{position:fixed;pointer-events:none;z-index:5;animation:floatUp 3.5s linear forwards;font-size:20px}
+@keyframes floatUp{from{transform:translateY(0) rotate(0);opacity:0}10%{opacity:1}to{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+@media(max-width:380px){main{padding-top:25px}.card{padding:20px 15px}.letter-content{padding:20px 15px}}
+</style>
+</head>
+<body>
+<div class="web"></div><div class="city"></div>
+<main>
+  <div class="badge">a tiny message from your friendly neighbourhood 💌</div>
+  <div class="spider-icon" aria-hidden="true">🕷️</div>
+  <h1>HEY,<br><span>SPIDER-MAN</span></h1>
+  <p class="subtitle">Your friendly neighbourhood apology has arrived. And, um… please don't swing away just yet. 🥹</p>
+
+  <section class="card">
+    <div class="page active" id="page1">
+      <h2>🚨 A small announcement</h2>
+      <p>The person behind this website has been reported for one (1) case of sounding colder than she actually felt.</p>
+      <p class="small">No villains were involved. Just a plate-washing situation. 😭</p>
+      <button onclick="go(2)">THWIP! 🕸️</button>
+    </div>
+    <div class="page" id="page2">
+      <h2>Wait, don't go! 🥺</h2>
+      <p>You texted me because you wanted to talk to me, and I replied in a way that could've made it seem like I didn't want to talk to you.</p>
+      <p>But the plot twist? I was actually washing plates. 😭🍽️ I wasn't trying to be cold or make you feel unwanted.</p>
+      <button class="secondary" onclick="go(3)">Okay… tell me more ❤️</button>
+    </div>
+    <div class="page" id="page3">
+      <h2>Something for you 💌</h2>
+      <p>I've got a little letter for you. Tap the envelope to open it.</p>
+      <div class="envelope-wrap" onclick="openEnvelope()" role="button" tabindex="0" aria-label="Open the apology letter">
+        <div class="envelope" id="envelope">
+          <div class="letter">A tiny letter for my favourite human… ❤️<br><br>Tap to read</div>
+          <div class="flap"></div><div class="seal">🕷️</div>
+        </div>
+      </div>
+      <p class="small" id="envelopeHint">Tap the envelope 🕸️</p>
+      <button id="readButton" onclick="go(4)" style="display:none">READ YOUR LETTER ❤️</button>
+    </div>
+    <div class="page" id="page4">
+      <div class="letter-content">
+        <h3>Dear Spider-Man, 🕷️❤️</h3>
+        <p>I'm sorry if my reply made you feel like I didn't want to talk to you. I know you texted me because you genuinely wanted to speak with me, and I hate that my response may have made you feel otherwise.</p>
+        <p>I was actually washing plates 😭🍽️, but I realise that you couldn't have known that from my cold reply. I should've communicated better instead of accidentally giving you the wrong impression.</p>
+        <p>I wasn't ignoring you or trying to push you away. I really do enjoy talking to you, and I never wanted you to feel like you were bothering me when you weren't.</p>
+        <p>So, from your friendly neighbourhood idiot: I'm sorry. 🥹❤️ Next time, I'll try to let you know when I'm busy instead of sounding like a villain who just lost her last brain cell.</p>
+        <p>Even Spider-Man can't save everyone from awkward replies, apparently. But this girl can at least apologise when she gets it wrong. 😭🕸️</p>
+        <p>Thank you for wanting to talk to me. It means more than my plate-washing self managed to show. ❤️</p>
+        <p class="signature">Signed,<br>Your friendly neighbourhood plate washer 🕷️</p>
+      </div>
+      <div class="hearts">❤️ 💙 🕸️</div>
+      <button onclick="go(5)">One last thing… 🥹</button>
+    </div>
+    <div class="page" id="page5">
+      <div class="spider-icon">🕷️💗</div>
+      <h2>Apology delivered!</h2>
+      <p>Can this friendly neighbourhood idiot have a little forgiveness? 🥹</p>
+      <p>And next time you text me “heyyyyyyyy,” I'll try not to reply like I'm fighting the Green Goblin. 😭</p>
+      <p><strong>No pressure to reply a certain way.</strong> I just wanted you to know what I really meant.</p>
+      <div class="hearts">❤️ 💙 ❤️</div>
+      <button onclick="sprinkleHearts()">Send virtual hugs 🫂</button>
+      <button class="secondary" onclick="go(1)">Read it again ↺</button>
+    </div>
+    <div class="progress" aria-label="Page progress"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+  </section>
+  <footer>made with a little courage, a little web-slinging, and lots of ❤️</footer>
+</main>
+<script>
+let current=1;
+function go(n){
+  document.getElementById('page'+current).classList.remove('active');
+  current=n;
+  document.getElementById('page'+current).classList.add('active');
+  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===n-1));
+  if(n===1){document.getElementById('envelope').classList.remove('open');document.getElementById('readButton').style.display='none';document.getElementById('envelopeHint').style.display='block';}
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function openEnvelope(){
+ const env=document.getElementById('envelope');
+ env.classList.add('open');
+ document.getElementById('envelopeHint').textContent='Awww, the letter is opening… ❤️';
+ setTimeout(()=>{document.getElementById('readButton').style.display='inline-block';document.getElementById('envelopeHint').textContent='Your letter is ready 🥹';},650);
+}
+function sprinkleHearts(){
+ const symbols=['❤️','💙','🕸️','💗','✨'];
+ for(let i=0;i<24;i++){
+  const s=document.createElement('div');s.className='spark';s.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  s.style.left=Math.random()*100+'vw';s.style.bottom='-30px';s.style.animationDelay=(Math.random()*.9)+'s';
+  document.body.appendChild(s);setTimeout(()=>s.remove(),4300);
+ }
+}
+document.querySelector('.envelope-wrap').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openEnvelope();}});
+</script>
+</body>
+</html>
